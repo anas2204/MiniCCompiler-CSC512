@@ -1,0 +1,85 @@
+-  LL1 GRAMMAR:
+
+<program> —> <type_name> ID <program_prime> | empty
+
+<program_prime> —> <id_prime> <id_list_prime> semicolon <program> | left_parenthesis <parameter_list> right_parenthesis <func_prime> <func_list>
+
+<func_list> --> empty | <func> <func list> 
+
+<func> --> <func_decl>  <func_prime>
+
+<func_prime> —> semicolon | left_brace <data_decl> <statements> right_brace 
+
+<func_decl> --> <type_name> ID left_parenthesis <parameter_list> right_parenthesis 
+
+<type_name> --> int | void | binary | decimal 
+
+<parameter_list> --> empty | void | <non_empty list>
+
+<non_empty list> —>  <type_name> ID <non_empty list_prime>
+
+<non_empty list_prime> —> empty | comma <type_name> ID <non_empty list_prime>
+
+<data_decl> --> empty | <type_name> <id_list> semicolon <data_decl> 
+
+<id_list> —> <id> <id_list_prime>
+
+<id_list_prime> —> comma <id> <id_list_prime> | empty
+
+<id> --> ID <id_prime>
+
+<id_prime> —> left_bracket <expression> right_bracket | empty
+
+<block_statements> --> left_brace <statements> right_brace 
+
+<statements> --> empty | <statement> <statements> 
+
+<statement> --> ID <statement_prime> | <if statement> | <while statement> | <return_statement> | <break statement> | <continue statement> | read left_parenthesis  ID right_parenthesis semicolon | write left_parenthesis <expression> right_parenthesis semicolon | print left_parenthesis  STRING right_parenthesis semicolon 
+
+<statement_prime> —>  <assignment> | <func call>
+
+<assignment> --> <id_prime> equal_sign <expression> semicolon 
+
+<func call> --> left_parenthesis <expr_list> right_parenthesis semicolon 
+
+<expr_list> --> empty | <non-empty expr_list> 
+
+<non-empty expr_list> --> <expression> <non-empty expr_list_prime>
+
+<non-empty expr_list_prime> —> comma <expression> <non-empty expr_list_prime> | empty
+
+<if statement> --> if left_parenthesis <condition_expression> right_parenthesis <block_statements> 
+
+<condition_expression> -->  <condition> <condition_expression_prime>
+<condition_expression_prime> —> <condition op> <condition> | empty
+
+<condition op> --> double_and_sign | double_or_sign 
+
+<condition> --> <expression> <comparison op> <expression> 
+
+<comparison op> --> == | != | > | >= | < | <=
+
+<while statement> --> while left_parenthesis <condition_expression> right_parenthesis <block_statements> 
+
+<return_statement> --> return  <return statement prime>
+<return_statement prime> --> <expression> semicolon | semicolon
+
+<break statement> ---> break semicolon 
+
+<continue statement> ---> continue semicolon
+
+<expression> —> <term> <expression_prime>
+
+<expression_prime> —> <addop> <term> <expression_prime> | empty 
+
+<term> —> <factor> <term_prime>
+
+<term_prime> —> <mulop> <factor> <term_prime> | empty
+
+<addop> --> plus_sign | minus_sign
+
+<mulop> --> star_sign | forward_slash 
+
+<factor> --> ID <factor_prime> | NUMBER | minus_sign NUMBER | left_parenthesis <expression> right_parenthesis
+
+<factor_prime> —> left_bracket <expression> right_bracket | left_parenthesis <expr_list> right_parenthesis | empty
