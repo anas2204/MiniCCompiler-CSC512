@@ -8,4 +8,7 @@ How to Compile: Keep all files to test (*.c) in the same folder as .java files. 
 javac *.java
 java Main <fileName>
 ```
+
+The output of the program shows the number of functions, variables and number of statements in the input ".c" file.
+
 [here]:https://github.com/anas2204/MiniCCompiler-CSC512/blob/master/LL1%20Grammar%20of%20C%20language.txt
