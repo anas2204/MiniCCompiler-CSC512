@@ -13,7 +13,7 @@ public class Main {
             System.exit(0);
         }
 
-        ParserLatest parser = new ParserLatest(args[0]);
+        Parser parser = new Parser(args[0]);
         boolean result = parser.start();
 
         if (result)
